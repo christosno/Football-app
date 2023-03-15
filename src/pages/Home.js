@@ -12,13 +12,13 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
   }, []);
 
   const fetchData = async () => {
     try {
       const fetchedData = await fetch(
-        "https://api-football-v1.p.rapidapi.com/v3/timezone",
+        "https://api-football-v1.p.rapidapi.com/v3/fixtures?date=2023-03-15",
         options
       );
 
