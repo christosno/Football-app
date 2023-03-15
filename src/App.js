@@ -1,6 +1,5 @@
-import { Button } from "react-daisyui";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+import FooterComp from "./components/FooterComp";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
@@ -10,7 +9,7 @@ const RouteLayout = () => {
     <>
       <Header />
       <Outlet />
-      <Footer />
+      <FooterComp />
     </>
   );
 };
