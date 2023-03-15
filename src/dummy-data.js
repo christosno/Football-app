@@ -1,4 +1,4 @@
-export const data = [
+export const apidata = [
   {
     fixture: {
       id: 972936,

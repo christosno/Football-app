@@ -1,9 +1,9 @@
-import React from "react";
-import { Footer } from "react-daisyui";
+import React from 'react';
+import { Footer } from 'react-daisyui';
 
 const FooterComp = () => {
   return (
-    <Footer className="p-10 bg-neutral text-neutral-content absolute bottom-0 ">
+    <Footer className="p-10 bg-neutral text-neutral-content ">
       <div>
         <svg
           width="50"
