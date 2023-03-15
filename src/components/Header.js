@@ -32,7 +32,7 @@ const Header = () => {
         </Navbar.Start>
         <Navbar.Center>
           <Button color="ghost" className="normal-case text-xl">
-            daisyUI
+            Football App
           </Button>
         </Navbar.Center>
         <Navbar.End className="navbar-end">
@@ -70,6 +70,24 @@ const Header = () => {
               </svg>
             </Indicator>
           </Button>
+          {/* <Button shape="circle" children="Login" /> */}
+          <Dropdown vertical="end">
+            <Button color="ghost" className="avatar" shape="circle">
+              <div className="w-10 rounded-full">
+                <img src="https://api.lorem.space/image/face?hash=33791" />
+              </div>
+            </Button>
+            <Dropdown.Menu className="w-52 menu-compact">
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </a>
+              </li>
+              <Dropdown.Item>Settings</Dropdown.Item>
+              <Dropdown.Item>Logout</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </Navbar.End>
       </Navbar>
     </div>
