@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Match from '../components/Match';
 import { apidata } from '../dummy-data';
+import { Button, Table, Pagination } from 'react-daisyui';
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -36,7 +38,29 @@ const Home = () => {
 
   return (
     <>
-      <p>Home</p>
+      <div className="overflow-x-auto flex justify-center">
+        <Table zebra="true">
+          <Table.Head>
+            <span>Time</span>
+            <span>League</span>
+            <span>Home</span>
+            <span>Away</span>
+            <span>Score</span>
+          </Table.Head>
+
+          <Table.Body>
+            {finalData.map((fixture) => {
+              return <Match key={fixture.fixture.id} matchData={fixture} />;
+            })}
+          </Table.Body>
+        </Table>
+      </div>
+      <Pagination>
+        <Button>1</Button>
+        <Button active>2</Button>
+        <Button>3</Button>
+        <Button>4</Button>
+      </Pagination>
     </>
   );
 };
