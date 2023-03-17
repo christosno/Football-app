@@ -83,7 +83,7 @@ const Header = ({ toggleSearchModal }) => {
               </svg>
             </Indicator>
           </Button>
-          <Link to="/auth">
+          <Link to="/auth?mode=login">
             <Button shape="circle" children="Login" />
           </Link>
           {/* <Dropdown vertical="end">
