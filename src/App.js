@@ -20,12 +20,14 @@ const RouteLayout = () => {
   };
 
   return (
-    <>
+    <div id="test" className="absolute w-full h-full">
       {isModalOn && <Modal onCloseSearchModal={onCloseSearchModalHandler} />}
       <Header toggleSearchModal={toggleSearchModalHandler} />
-      <Outlet />
+      <div className="mt-44 h-[63vh] md:h-[57vh]">
+        <Outlet />
+      </div>
       <FooterComp />
-    </>
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Header = ({ toggleSearchModal }) => {
   return (
-    <div className="pb-40 flex w-full component-preview p-4 items-center justify-center gap-2 font-sans">
+    <div className="bg-base-100 shadow-xl rounded-box pb-4 flex w-full component-preview p-4 items-center justify-center gap-2 font-sans fixed top-0 left-0">
       <Navbar>
         <Navbar.Start>
           <Dropdown>
