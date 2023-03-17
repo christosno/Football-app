@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Navbar, Dropdown, Indicator, Badge } from "react-daisyui";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ toggleSearchModal }) => {
   return (
     <div className="pb-40 flex w-full component-preview p-4 items-center justify-center gap-2 font-sans">
       <Navbar>
@@ -45,6 +45,7 @@ const Header = () => {
           <Button
             onClick={() => {
               console.log("Search icon clicked");
+              toggleSearchModal();
             }}
             color="ghost"
             shape="circle"

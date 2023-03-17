@@ -3,8 +3,8 @@ import { Input } from "react-daisyui";
 
 const Search = () => {
   return (
-    <div className="flex w-full component-preview p-4 items-center justify-center gap-2 font-sans">
-      <Input placeholder="Search" />
+    <div className="w-full component-preview p-4 items-center justify-center gap-2 font-sans fixed top-24 z-30 ">
+      <Input className="w-full max-w" placeholder="Search" />
     </div>
   );
 };

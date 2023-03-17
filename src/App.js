@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import FooterComp from "./components/FooterComp";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -5,11 +6,19 @@ import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
 import LiveMatches from "./pages/LiveMatches";
 import Leagues from "./pages/Leagues";
+import Modal from "./components/Modal";
 
 const RouteLayout = () => {
+  const [isModalOn, setIsModalOn] = useState(false);
+
+  const toggleSearchModalHandler = () => {
+    setIsModalOn(!isModalOn);
+  };
+
   return (
     <>
-      <Header />
+      {isModalOn && <Modal />}
+      <Header toggleSearchModal={toggleSearchModalHandler} />
       <Outlet />
       <FooterComp />
     </>
