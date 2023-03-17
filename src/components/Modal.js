@@ -4,10 +4,13 @@ import Search from "./Search";
 
 const portalElement = document.getElementById("overlays");
 
-const Modal = ({ onCloseModal }) => {
+const Modal = ({ onCloseSearchModal }) => {
   return (
     <div className="bg-white">
-      {ReactDOM.createPortal(<Search />, portalElement)}
+      {ReactDOM.createPortal(
+        <Search onCloseSearchModal={onCloseSearchModal} />,
+        portalElement
+      )}
     </div>
   );
 };

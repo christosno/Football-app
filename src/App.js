@@ -15,9 +15,13 @@ const RouteLayout = () => {
     setIsModalOn(!isModalOn);
   };
 
+  const onCloseSearchModalHandler = () => {
+    setIsModalOn(false);
+  };
+
   return (
     <>
-      {isModalOn && <Modal />}
+      {isModalOn && <Modal onCloseSearchModal={onCloseSearchModalHandler} />}
       <Header toggleSearchModal={toggleSearchModalHandler} />
       <Outlet />
       <FooterComp />
