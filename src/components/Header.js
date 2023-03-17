@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Navbar, Dropdown, Indicator, Badge } from "react-daisyui";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -24,19 +25,30 @@ const Header = () => {
               </svg>
             </Button>
             <Dropdown.Menu tabIndex={0} className="menu-compact w-52">
-              <Dropdown.Item>Homepage</Dropdown.Item>
-              <Dropdown.Item>Portfolio</Dropdown.Item>
-              <Dropdown.Item>About</Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="/live-matches">Live Matches</Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="/leagues">Leagues</Link>
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Navbar.Start>
         <Navbar.Center>
-          <Button color="ghost" className="normal-case text-xl">
-            Football App
-          </Button>
+          <Link to="/">
+            <Button color="ghost" className="normal-case text-xl">
+              Football App
+            </Button>
+          </Link>
         </Navbar.Center>
         <Navbar.End className="navbar-end">
-          <Button color="ghost" shape="circle">
+          <Button
+            onClick={() => {
+              console.log("Search icon clicked");
+            }}
+            color="ghost"
+            shape="circle"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -70,8 +82,10 @@ const Header = () => {
               </svg>
             </Indicator>
           </Button>
-          {/* <Button shape="circle" children="Login" /> */}
-          <Dropdown vertical="end">
+          <Link to="/auth">
+            <Button shape="circle" children="Login" />
+          </Link>
+          {/* <Dropdown vertical="end">
             <Button color="ghost" className="avatar" shape="circle">
               <div className="w-10 rounded-full">
                 <img src="https://api.lorem.space/image/face?hash=33791" />
@@ -87,7 +101,7 @@ const Header = () => {
               <Dropdown.Item>Settings</Dropdown.Item>
               <Dropdown.Item>Logout</Dropdown.Item>
             </Dropdown.Menu>
-          </Dropdown>
+          </Dropdown> */}
         </Navbar.End>
       </Navbar>
     </div>

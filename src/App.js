@@ -3,6 +3,8 @@ import FooterComp from "./components/FooterComp";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
+import LiveMatches from "./pages/LiveMatches";
+import Leagues from "./pages/Leagues";
 
 const RouteLayout = () => {
   return (
@@ -21,6 +23,8 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <Home /> },
       { path: "auth", element: <Authentication /> },
+      { path: "live-matches", element: <LiveMatches /> },
+      { path: "leagues", element: <Leagues /> },
     ],
   },
 ]);
