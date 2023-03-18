@@ -28,9 +28,9 @@ const Header = ({ toggleSearchModal }) => {
               <Dropdown.Item>
                 <Link to="/live-matches">Live Matches</Link>
               </Dropdown.Item>
-              <Dropdown.Item>
+              {/* <Dropdown.Item>
                 <Link to="/leagues">Leagues</Link>
-              </Dropdown.Item>
+              </Dropdown.Item> */}
             </Dropdown.Menu>
           </Dropdown>
         </Navbar.Start>
