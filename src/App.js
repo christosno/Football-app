@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
 import LiveMatches from "./pages/LiveMatches";
-import Leagues from "./pages/Leagues";
+// import Leagues from "./pages/Leagues";
 import Modal from "./components/Modal";
 
 const RouteLayout = () => {
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       { path: "", element: <Home /> },
       { path: "auth", element: <Authentication /> },
       { path: "live-matches", element: <LiveMatches /> },
-      { path: "leagues", element: <Leagues /> },
+      // { path: "leagues", element: <Leagues /> },
     ],
   },
 ]);

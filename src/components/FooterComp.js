@@ -3,7 +3,7 @@ import { Footer } from "react-daisyui";
 
 const FooterComp = () => {
   return (
-    <Footer className="p-10 bg-neutral text-neutral-content">
+    <Footer className="p-10 bg-neutral text-neutral-content fixed bottom-0 left-0">
       <div>
         <svg
           width="50"

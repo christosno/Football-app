@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import Match from '../components/Match';
-import { apidata } from '../dummy-data';
-import { Button, Table, Pagination } from 'react-daisyui';
+import Countries from '../components/Leagues/Countries';
 
 const Home = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   // const options = {
-  //   method: 'GET',
+  //   method: "GET",
   //   headers: {
-  //     'X-RapidAPI-Key': process.env.REACT_APP_X_RAPIDAPI_KEY,
-  //     'X-RapidAPI-Host': process.env.REACT_APP_X_RAPIDAPI_HOST,
+  //     "X-RapidAPI-Key": process.env.REACT_APP_X_RAPIDAPI_KEY,
+  //     "X-RapidAPI-Host": process.env.REACT_APP_X_RAPIDAPI_HOST,
   //   },
   // };
 
-  const finalData = apidata;
-
-  useEffect(() => {
-    console.log(finalData);
-    // fetchData();
-  }, []);
+  // useEffect(() => {
+  //   // fetchData();
+  // }, []);
 
   // const fetchData = async () => {
   //   try {
@@ -38,29 +33,12 @@ const Home = () => {
 
   return (
     <>
-      <div className="overflow-x-auto flex justify-center">
-        <Table zebra="true">
-          <Table.Head>
-            <span>Time</span>
-            <span>League</span>
-            <span>Home</span>
-            <span>Away</span>
-            <span>Score</span>
-          </Table.Head>
-
-          <Table.Body>
-            {finalData.map((fixture) => {
-              return <Match key={fixture.fixture.id} matchData={fixture} />;
-            })}
-          </Table.Body>
-        </Table>
+      <div className="flex w-auto md:space-x-4 justify-center align-top">
+        <div className="bg-neutral w-44 rounded-2xl p-4 hidden md:block">
+          <Countries />
+        </div>
+        <div className="bg-neutral w-[33rem] rounded-2xl p-8 ">phone-2</div>
       </div>
-      <Pagination>
-        <Button>1</Button>
-        <Button active>2</Button>
-        <Button>3</Button>
-        <Button>4</Button>
-      </Pagination>
     </>
   );
 };
