@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Countries from '../components/Leagues/Countries';
+import Matches from '../components/Matches';
 
 const Home = () => {
   // const [data, setData] = useState([]);
@@ -37,7 +38,9 @@ const Home = () => {
         <div className="bg-neutral w-44 rounded-2xl p-4 hidden md:block">
           <Countries />
         </div>
-        <div className="bg-neutral w-[33rem] rounded-2xl p-8 ">phone-2</div>
+        <div className="bg-neutral w-[33rem] rounded-2xl p-8 ">
+          <Matches />
+        </div>
       </div>
     </>
   );
