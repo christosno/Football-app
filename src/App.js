@@ -26,7 +26,7 @@ const RouteLayout = () => {
       <div className="mt-44 h-[63vh] md:h-[57vh]">
         <Outlet />
       </div>
-      <FooterComp />
+      {/* <FooterComp /> */}
     </div>
   );
 };
