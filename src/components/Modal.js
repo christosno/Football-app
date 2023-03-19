@@ -8,7 +8,7 @@ const Modal = ({ onCloseSearchModal }) => {
   return (
     <div className="bg-white">
       {ReactDOM.createPortal(
-        <Search onCloseSearchModal={onCloseSearchModal} />,
+        <Search position="absolute" onCloseSearchModal={onCloseSearchModal} />,
         portalElement
       )}
     </div>
