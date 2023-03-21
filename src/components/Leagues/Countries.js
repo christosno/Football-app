@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import CountryLeagues from './CountryLeagues';
-import { countriesData, countryLeagues } from '../../dummy-data';
-import { Divider } from 'react-daisyui';
-import Search from '../Search';
+import React, { useState } from "react";
+import CountryLeagues from "./CountryLeagues";
+import { countriesData, countryLeagues } from "../../dummy-data";
+import { Divider } from "react-daisyui";
+import Search from "../Search";
 
-const Countries = () => {
+const Countries = ({ toggleLeaguesHandler }) => {
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [leagueId, setLeagueId] = useState(null);
 
+  console.log(leagueId);
+  console.log(selectedCountry);
   return (
     <>
       <div className="mt-3">
@@ -41,17 +44,24 @@ const Countries = () => {
         ? countriesData.map((countryData) => {
             return (
               <CountryLeagues
+                toggleLeaguesHandler={() => {}}
                 clickCountryHandler={setSelectedCountry}
-                id={countryData.code}
+                id={null}
                 logo={countryData.flag}
                 name={countryData.name}
+                key={countryData.name}
               />
             );
           })
         : countryLeagues.map((countryLeague) => {
             return (
               <CountryLeagues
-                clickCountryHandler={() => {}}
+                toggleLeaguesHandler={toggleLeaguesHandler}
+                key={countryLeague.league.id}
+                clickCountryHandler={() => {
+                  console.log("league clicked", countryLeague.league.id);
+                  setLeagueId(countryLeague.league.id);
+                }}
                 id={countryLeague.league.id}
                 logo={countryLeague.league.logo}
                 name={countryLeague.league.name}
