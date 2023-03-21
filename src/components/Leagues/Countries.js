@@ -4,19 +4,28 @@ import { countriesData, countryLeagues } from "../../dummy-data";
 import { Divider } from "react-daisyui";
 import Search from "../Search";
 
-const Countries = ({ toggleLeaguesHandler }) => {
+const Countries = ({ toggleLeaguesHandler, isLeagueOpen }) => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [leagueId, setLeagueId] = useState(null);
+  const [showMore, setShowMore] = useState(false);
 
   console.log(leagueId);
   console.log(selectedCountry);
+  console.log(showMore);
+
+  const finalCountriesData = !showMore
+    ? countriesData.slice(0, 50)
+    : countriesData;
+  const finalCountryLeagues = !showMore
+    ? countryLeagues.slice(0, 40)
+    : countryLeagues;
   return (
     <>
       <div className="mt-3">
         {!selectedCountry ? (
           <Search />
         ) : (
-          <div className="flex items-center justify-between px-2 cursor-pointer">
+          <div className="flex items-center px-2 cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -32,7 +41,7 @@ const Countries = ({ toggleLeaguesHandler }) => {
                 d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
               />
             </svg>
-            <span className="text-center text-neutral-content text-lg font-medium">
+            <span className="text-center ml-4 text-neutral-content justify-self-start text-lg font-medium">
               {selectedCountry}
             </span>
           </div>
@@ -41,9 +50,10 @@ const Countries = ({ toggleLeaguesHandler }) => {
       <Divider />
 
       {!selectedCountry
-        ? countriesData.map((countryData) => {
+        ? finalCountriesData.map((countryData) => {
             return (
               <CountryLeagues
+                isLeagueOpen={isLeagueOpen}
                 toggleLeaguesHandler={() => {}}
                 clickCountryHandler={setSelectedCountry}
                 id={null}
@@ -53,9 +63,10 @@ const Countries = ({ toggleLeaguesHandler }) => {
               />
             );
           })
-        : countryLeagues.map((countryLeague) => {
+        : finalCountryLeagues.map((countryLeague) => {
             return (
               <CountryLeagues
+                isLeagueOpen={isLeagueOpen}
                 toggleLeaguesHandler={toggleLeaguesHandler}
                 key={countryLeague.league.id}
                 clickCountryHandler={() => {
@@ -68,6 +79,14 @@ const Countries = ({ toggleLeaguesHandler }) => {
               />
             );
           })}
+      {!showMore && (
+        <p
+          onClick={() => setShowMore(true)}
+          className="cursor-pointer text-center text-ellipsis text-sm p-4 italic hover:text-white"
+        >
+          show more
+        </p>
+      )}
     </>
   );
 };

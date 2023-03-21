@@ -55,11 +55,17 @@ const Home = () => {
       </div>
       <div className="flex w-auto md:space-x-4 justify-center align-top">
         <div className="bg-neutral w-44 rounded-2xl p-4 hidden md:block">
-          <Countries toggleLeaguesHandler={() => {}} />
+          <Countries
+            isLeagueOpen={toggleLeagues}
+            toggleLeaguesHandler={() => {}}
+          />
         </div>
         <div className="bg-neutral w-full md:w-[33rem] rounded-2xl p-8 mx-2">
           {toggleLeagues ? (
-            <Countries toggleLeaguesHandler={setToggleLeagues} />
+            <Countries
+              isLeagueOpen={toggleLeagues}
+              toggleLeaguesHandler={setToggleLeagues}
+            />
           ) : (
             <Matches />
           )}

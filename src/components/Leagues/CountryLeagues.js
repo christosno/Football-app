@@ -7,6 +7,7 @@ const CountryLeagues = ({
   id,
   clickCountryHandler,
   toggleLeaguesHandler,
+  isLeagueOpen,
 }) => {
   return (
     <div
@@ -14,13 +15,13 @@ const CountryLeagues = ({
         clickCountryHandler(name);
         toggleLeaguesHandler(false);
       }}
-      className="flex w-full p-2 mb-1 space-x-4 justify-strech items-center align-middle hover:bg-base-200 rounded-xl cursor-pointer "
+      className="flex w-full px-2 py-1 mb-1 space-x-4 justify-strech items-center align-middle hover:bg-base-200 rounded-xl cursor-pointer "
     >
-      <div className="w-1/4">
-        <Mask src={logo} className="rounded" />
+      <div className=" md:w-1/4 w-1/8">
+        <Mask src={logo} className="rounded h-6 w-6" />
       </div>
-      <div className="w-3/4 text-neutral-content text-sm">
-        {name?.length > 11 ? name.slice(0, 10) + "..." : name}
+      <div className="md:w-3/4 w-2/8 text-neutral-content text-sm">
+        {name?.length > 11 && !isLeagueOpen ? name.slice(0, 10) + "..." : name}
       </div>
     </div>
   );

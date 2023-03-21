@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Divider, Mask } from 'react-daisyui';
-import { months } from '../data/Months';
+import React, { useState } from "react";
+import { Divider, Mask } from "react-daisyui";
+import { months } from "../data/Months";
 
 function Match({ matchData }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,16 +15,18 @@ function Match({ matchData }) {
         className="w-full flex justify-center cursor-pointer"
         onClick={handleToggle}
       >
-        <div className="flex flex-col w-1/6 items-center">
-          <div>
-            {matchData.fixture.date.substring(8, 10)}-
-            {months[+matchData.fixture.date.substring(5, 7) - 1]}
-          </div>
+        <div className="flex flex-col w-1/6 items-center justify-center text-sm">
+          {matchData.fixture.status.short !== "LIVE" && (
+            <div>
+              {matchData.fixture.date.substring(8, 10)}-
+              {months[+matchData.fixture.date.substring(5, 7) - 1]}
+            </div>
+          )}
           <div className="mt-1">
-            {matchData.fixture.status.short === 'NS'
+            {matchData.fixture.status.short === "NS"
               ? matchData.fixture.date.substring(11, 16)
-              : matchData.fixture.status.short === 'LIVE'
-              ? matchData.fixture.status.elapsed
+              : matchData.fixture.status.short === "LIVE"
+              ? `${matchData.fixture.status.elapsed}'`
               : matchData.fixture.status.short}
           </div>
         </div>
