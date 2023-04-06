@@ -28,14 +28,14 @@ function Match({ matchData }) {
               {matchData.teams.home.name}
             </div>
           </div>
-          <div className="w-6 h-6 flex mt-1 text-sm">
+          <div className="w-6 h-6 flex mt-1 text-sm ">
             <Mask src={matchData.teams.away.logo} className="rounded" />
             <div className="ml-4 whitespace-nowrap">
               {matchData.teams.away.name}
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-1/6 items-end pr-6 text-sm">
+        <div className="flex flex-col w-1/6 items-end pr-6 text-sm font-semibold">
           <div>{matchData.goals.home}</div>
           <div className="mt-1">{matchData.goals.away}</div>
         </div>
