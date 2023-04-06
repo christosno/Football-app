@@ -5,7 +5,7 @@ import axios from "axios";
 const useFetchMatchesByDate = (matchesDate) => {
   const options = {
     method: "GET",
-    url: "https://api-football-v1.p.rapidapi.com/v3/fixtures",
+    url: "https://api-football-v1.p.rapidapi.com/v3/fixtures111",
     params: { date: matchesDate },
     headers: {
       "X-RapidAPI-Key": process.env.REACT_APP_X_RAPIDAPI_KEY,
