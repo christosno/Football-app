@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import CountryLeagues from "./CountryLeagues";
-import { countriesData, countryLeagues } from "../../dummy-data";
+import useFetchCountries from "../../hooks/useFetchCountries";
+import useFetchCountryLeagues from "../../hooks/useFetchCountryLeagues";
+// import { countryLeagues } from "../../dummy-data";
 import { Divider } from "react-daisyui";
 import Search from "../Search";
 
@@ -9,16 +11,29 @@ const Countries = ({ toggleLeaguesHandler, isLeagueOpen }) => {
   const [leagueId, setLeagueId] = useState(null);
   const [showMore, setShowMore] = useState(false);
 
-  console.log(leagueId);
   console.log(selectedCountry);
-  console.log(showMore);
+
+  const [countryIsLoading, countryData, countryIsError, countryError] =
+    useFetchCountries();
+
+  const [leagueIsLoading, leagueData, leagueIsError, leagueError] =
+    useFetchCountryLeagues(selectedCountry);
+
+  console.log("00000000000000----------", leagueData);
 
   const finalCountriesData = !showMore
-    ? countriesData.slice(0, 50)
-    : countriesData;
-  const finalCountryLeagues = !showMore
-    ? countryLeagues.slice(0, 40)
-    : countryLeagues;
+    ? countryData?.slice(0, 50)
+    : countryData;
+  const finalCountryLeagues = !showMore ? leagueData?.slice(0, 40) : leagueData;
+
+  if (countryIsLoading || leagueIsLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (countryIsError || leagueIsError) {
+    return <p>{countryError.message}</p>;
+  }
+
   return (
     <>
       <div className="mt-3">

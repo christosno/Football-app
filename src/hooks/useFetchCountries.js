@@ -1,19 +1,23 @@
 import { useQuery } from "react-query";
 import axios from "axios";
 
-const useFetchMatchesByDate = (matchesDate) => {
+const useFetchCountries = () => {
   const options = {
     method: "GET",
-    url: "https://api-football-v1.p.rapidapi.com/v3/fixtures111",
-    params: { date: matchesDate },
+    url: "https://api-football-v1.p.rapidapi.com/v3/countries111",
     headers: {
       "X-RapidAPI-Key": process.env.REACT_APP_X_RAPIDAPI_KEY,
       "X-RapidAPI-Host": process.env.REACT_APP_X_RAPIDAPI_HOST,
     },
   };
 
-  const { isLoading, data, isError, error } = useQuery(
-    "matches-by-date",
+  const {
+    isLoading: countryIsLoading,
+    data: countryData,
+    isError: countryIsError,
+    error: countryError,
+  } = useQuery(
+    "countries",
     () => {
       return axios.request(options);
     },
@@ -21,11 +25,11 @@ const useFetchMatchesByDate = (matchesDate) => {
       select: (data) => {
         return data.data.response;
       },
-      staleTime: 1800000,
+      staleTime: Infinity,
     }
   );
 
-  return [isLoading, data, isError, error];
+  return [countryIsLoading, countryData, countryIsError, countryError];
 };
 
-export default useFetchMatchesByDate;
+export default useFetchCountries;
