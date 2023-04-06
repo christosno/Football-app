@@ -23,7 +23,6 @@ const Matches = () => {
   const displayData = data?.slice(1, endIndex);
 
   useEffect(() => {
-    console.log("is data full -----> ", data?.length > 100 * moreData);
     setDesplayMoreMatchesButton(() => data?.length > 100 * moreData);
   }, [moreData, data]);
 
