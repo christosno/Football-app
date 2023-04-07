@@ -16,7 +16,7 @@ const Countries = ({ toggleLeaguesHandler, isLeagueOpen }) => {
   const [countryIsLoading, countryData, countryIsError, countryError] =
     useFetchCountries();
 
-  const [leagueIsLoading, leagueData, leagueIsError, leagueError] =
+  const [leagueData, leagueIsLoading, leagueIsError, leagueErro] =
     useFetchCountryLeagues(selectedCountry);
 
   console.log("00000000000000----------", leagueData);
@@ -24,7 +24,9 @@ const Countries = ({ toggleLeaguesHandler, isLeagueOpen }) => {
   const finalCountriesData = !showMore
     ? countryData?.slice(0, 50)
     : countryData;
+
   const finalCountryLeagues = !showMore ? leagueData?.slice(0, 40) : leagueData;
+  // const finalCountryLeagues = leagueData;
 
   if (countryIsLoading || leagueIsLoading) {
     return <p>Loading...</p>;
