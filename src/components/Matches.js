@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 // import { matchData } from "../dummy-data";
 import useFetchMatchesByDate from "../hooks/useFetchMatchesByDate";
 import Match from "./Match";
-
 import { Button } from "react-daisyui";
 
 const Matches = () => {

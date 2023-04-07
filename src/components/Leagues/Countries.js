@@ -2,38 +2,28 @@ import React, { useState } from "react";
 import CountryLeagues from "./CountryLeagues";
 import useFetchCountries from "../../hooks/useFetchCountries";
 import useFetchCountryLeagues from "../../hooks/useFetchCountryLeagues";
-// import { countryLeagues } from "../../dummy-data";
 import { Divider } from "react-daisyui";
 import Search from "../Search";
+import DisplaySelectedCountry from "./DisplaySelectedCountry";
 
 const Countries = ({ toggleLeaguesHandler, isLeagueOpen }) => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [leagueId, setLeagueId] = useState(null);
-  const [showMore, setShowMore] = useState(false);
 
   console.log(selectedCountry);
 
-  const [countryIsLoading, countryData, countryIsError, countryError] =
+  const [countriesIsLoading, countriesData, countriesIsError, countriesError] =
     useFetchCountries();
 
   const [leagueData, leagueIsLoading, leagueIsError, leagueErro] =
     useFetchCountryLeagues(selectedCountry);
 
-  console.log("00000000000000----------", leagueData);
-
-  const finalCountriesData = !showMore
-    ? countryData?.slice(0, 50)
-    : countryData;
-
-  const finalCountryLeagues = !showMore ? leagueData?.slice(0, 40) : leagueData;
-  // const finalCountryLeagues = leagueData;
-
-  if (countryIsLoading || leagueIsLoading) {
+  if (countriesIsLoading || leagueIsLoading) {
     return <p>Loading...</p>;
   }
 
-  if (countryIsError || leagueIsError) {
-    return <p>{countryError.message}</p>;
+  if (countriesIsError || leagueIsError) {
+    return <p>{countriesError.message}</p>;
   }
 
   return (
@@ -42,32 +32,16 @@ const Countries = ({ toggleLeaguesHandler, isLeagueOpen }) => {
         {!selectedCountry ? (
           <Search />
         ) : (
-          <div className="flex items-center px-2 cursor-pointer">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-              onClick={() => setSelectedCountry(null)}
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
-              />
-            </svg>
-            <span className="text-center ml-4 text-neutral-content justify-self-start text-lg font-medium">
-              {selectedCountry}
-            </span>
-          </div>
+          <DisplaySelectedCountry
+            selectedCountry={selectedCountry}
+            setSelectedCountry={setSelectedCountry}
+          />
         )}
       </div>
       <Divider />
 
       {!selectedCountry
-        ? finalCountriesData.map((countryData) => {
+        ? countriesData.map((countryData) => {
             return (
               <CountryLeagues
                 isLeagueOpen={isLeagueOpen}
@@ -80,7 +54,7 @@ const Countries = ({ toggleLeaguesHandler, isLeagueOpen }) => {
               />
             );
           })
-        : finalCountryLeagues.map((countryLeague) => {
+        : leagueData.map((countryLeague) => {
             return (
               <CountryLeagues
                 isLeagueOpen={isLeagueOpen}
@@ -96,14 +70,6 @@ const Countries = ({ toggleLeaguesHandler, isLeagueOpen }) => {
               />
             );
           })}
-      {!showMore && (
-        <p
-          onClick={() => setShowMore(true)}
-          className="cursor-pointer text-center text-ellipsis text-sm p-4 italic hover:text-white"
-        >
-          show more
-        </p>
-      )}
     </>
   );
 };

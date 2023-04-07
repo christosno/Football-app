@@ -4,7 +4,7 @@ import axios from "axios";
 const useFetchCountries = () => {
   const options = {
     method: "GET",
-    url: "https://api-football-v1.p.rapidapi.com/v3/countries",
+    url: "https://api-football-v1.p.rapidapi.com/v3/countries111",
     headers: {
       "X-RapidAPI-Key": process.env.REACT_APP_X_RAPIDAPI_KEY,
       "X-RapidAPI-Host": process.env.REACT_APP_X_RAPIDAPI_HOST,
@@ -12,10 +12,10 @@ const useFetchCountries = () => {
   };
 
   const {
-    isLoading: countryIsLoading,
-    data: countryData,
-    isError: countryIsError,
-    error: countryError,
+    isLoading: countriesIsLoading,
+    data: countriesData,
+    isError: countriesIsError,
+    error: countriesError,
   } = useQuery(
     "countries",
     () => {
@@ -29,7 +29,7 @@ const useFetchCountries = () => {
     }
   );
 
-  return [countryIsLoading, countryData, countryIsError, countryError];
+  return [countriesIsLoading, countriesData, countriesIsError, countriesError];
 };
 
 export default useFetchCountries;

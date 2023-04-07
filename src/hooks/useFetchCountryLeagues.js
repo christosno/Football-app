@@ -4,7 +4,7 @@ import axios from "axios";
 const useFetchCountryLeagues = (countryName = "England") => {
   const options = {
     method: "GET",
-    url: "https://api-football-v1.p.rapidapi.com/v3/leagues",
+    url: "https://api-football-v1.p.rapidapi.com/v3/leagues111",
     params: { country: countryName },
     headers: {
       "X-RapidAPI-Key": process.env.REACT_APP_X_RAPIDAPI_KEY,
