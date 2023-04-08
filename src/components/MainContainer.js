@@ -3,6 +3,7 @@ import React from "react";
 import Countries from "./Countries/Countries";
 import Leagues from "./Leagues/Leagues";
 import Matches from "./Matches/Matches";
+import DatePicker from "./DatePicker";
 
 import { useSelector } from "react-redux";
 
@@ -41,6 +42,7 @@ function MainContainer() {
 
   return (
     <div className="bg-neutral w-full md:w-[33rem] rounded-2xl p-8 mx-2">
+      <DatePicker />
       {!isLeagueButtonCliked ? (
         <Matches />
       ) : displayComponent === "MATCHES" ? (
