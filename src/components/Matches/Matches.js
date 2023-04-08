@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import { matchData } from "../dummy-data";
-import useFetchMatchesByDate from "../hooks/useFetchMatchesByDate";
+import useFetchMatchesByDate from "../../hooks/useFetchMatchesByDate";
 import Match from "./Match";
 import { Button } from "react-daisyui";
 
@@ -8,6 +8,7 @@ const Matches = () => {
   const [moreData, setMoreData] = useState(1);
   const [desplayMoreMatchesButton, setDesplayMoreMatchesButton] =
     useState(true);
+
   const currentDate = new Date().toISOString().slice(0, 10);
 
   const [isLoading, data, isError, error] = useFetchMatchesByDate(currentDate);

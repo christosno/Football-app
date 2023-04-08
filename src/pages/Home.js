@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from "react";
-import Countries from "../components/Leagues/Countries";
+import React from "react";
 import { Button } from "react-daisyui";
-import Matches from "../components/Matches";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setIsLeagueButtonCliked,
+  setDisplayComponent,
+} from "../store/displaySlice";
+import LeftContainer from "../components/LeftContainer";
+import MainContainer from "../components/MainContainer";
 
 const Home = () => {
-  const [toggleLeagues, setToggleLeagues] = useState(false);
+  const dispatch = useDispatch();
 
   const leagueButtonClickHandler = () => {
-    setToggleLeagues(!toggleLeagues);
+    console.log("League button clicked");
+    dispatch(setIsLeagueButtonCliked());
+    dispatch(setDisplayComponent("COUNTRIES"));
   };
 
   return (
@@ -22,26 +29,11 @@ const Home = () => {
           children="Leagues"
           animation="true"
           responsive="true"
-          active={toggleLeagues}
         />
       </div>
       <div className="flex w-auto md:space-x-4 justify-center align-top">
-        <div className="bg-neutral w-44 rounded-2xl p-4 hidden md:block">
-          <Countries
-            isLeagueOpen={toggleLeagues}
-            toggleLeaguesHandler={() => {}}
-          />
-        </div>
-        <div className="bg-neutral w-full md:w-[33rem] rounded-2xl p-8 mx-2">
-          {toggleLeagues ? (
-            <Countries
-              isLeagueOpen={toggleLeagues}
-              toggleLeaguesHandler={setToggleLeagues}
-            />
-          ) : (
-            <Matches />
-          )}
-        </div>
+        <LeftContainer />
+        <MainContainer />
       </div>
     </>
   );
