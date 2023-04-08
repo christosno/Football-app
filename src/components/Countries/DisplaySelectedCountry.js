@@ -1,6 +1,15 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSelectedCountry,
+  setDisplayComponent,
+} from "../../store/displaySlice";
 
-const DisplaySelectedCountry = ({ selectedCountry, setSelectedCountry }) => {
+const DisplaySelectedCountry = () => {
+  const selectedCountry = useSelector((store) => store.display.selectedCountry);
+
+  const dispatch = useDispatch();
+
   return (
     <div className="flex items-center px-2 cursor-pointer">
       <svg
@@ -10,7 +19,10 @@ const DisplaySelectedCountry = ({ selectedCountry, setSelectedCountry }) => {
         stroke-width="1.5"
         stroke="currentColor"
         className="w-6 h-6"
-        onClick={() => setSelectedCountry(null)}
+        onClick={() => {
+          dispatch(setSelectedCountry(null));
+          dispatch(setDisplayComponent("COUNTRIES"));
+        }}
       >
         <path
           stroke-linecap="round"

@@ -10,6 +10,9 @@ import LiveMatches from "./pages/LiveMatches";
 // import Leagues from "./pages/Leagues";
 import Modal from "./components/Modal";
 
+import { Provider } from "react-redux";
+import store from "./store/index";
+
 const RouteLayout = () => {
   const [isModalOn, setIsModalOn] = useState(false);
 
@@ -49,10 +52,12 @@ const router = createBrowserRouter([
 const App = () => {
   const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </Provider>
   );
 };
 
