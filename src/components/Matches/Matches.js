@@ -1,17 +1,36 @@
 import React, { useState, useEffect } from "react";
-// import { matchData } from "../dummy-data";
 import useFetchMatchesByDate from "../../hooks/useFetchMatchesByDate";
 import Match from "./Match";
 import { Button } from "react-daisyui";
+import { useSelector } from "react-redux";
 
 const Matches = () => {
   const [moreData, setMoreData] = useState(1);
   const [desplayMoreMatchesButton, setDesplayMoreMatchesButton] =
     useState(true);
 
-  const currentDate = new Date().toISOString().slice(0, 10);
+  const leagueId = useSelector((store) => store.display.leagueId);
 
-  const [isLoading, data, isError, error] = useFetchMatchesByDate(currentDate);
+  const today = new Date();
+  const currentDate = today.toISOString().slice(0, 10);
+
+  const dayBefore = new Date(today);
+  dayBefore.setDate(today.getDate() - 1);
+  const dayBeforeDate = dayBefore.toISOString().slice(0, 10);
+
+  const dayAfter = new Date(today);
+  dayAfter.setDate(today.getDate() + 1);
+  const dayAfterDate = dayAfter.toISOString().slice(0, 10);
+
+  const currentYear = currentDate.slice(0, 4);
+
+  const [isLoading, data, isError, error] = useFetchMatchesByDate(
+    currentDate,
+    leagueId,
+    currentYear,
+    dayBeforeDate,
+    dayAfterDate
+  );
 
   const moreMatchesButtonClickHandler = () => {
     setMoreData((prev) => prev + 1);

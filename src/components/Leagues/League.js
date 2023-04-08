@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {
   setDisplayComponent,
   setSelectedLeague,
+  setLeagueId,
 } from "../../store/displaySlice";
 
 const League = ({ name, logo, id }) => {
@@ -12,6 +13,7 @@ const League = ({ name, logo, id }) => {
   const clickHandler = () => {
     dispatch(setDisplayComponent("MATCHES"));
     dispatch(setSelectedLeague(name));
+    dispatch(setLeagueId(id));
   };
 
   return (
