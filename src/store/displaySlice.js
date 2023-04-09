@@ -5,6 +5,7 @@ const displaySlice = createSlice({
   initialState: {
     selectedCountry: "",
     selectedLeague: "",
+    selectedDate: new Date(),
     leagueId: null,
     displayComponent: "COUNTRIES",
     isLeagueButtonCliked: false,
@@ -25,6 +26,9 @@ const displaySlice = createSlice({
     setLeagueId: (state, action) => {
       state.leagueId = action.payload;
     },
+    setSelectedDate: (state, action) => {
+      state.selectedDate = action.payload;
+    },
   },
 });
 
@@ -34,6 +38,7 @@ export const {
   setDisplayComponent,
   setIsLeagueButtonCliked,
   setLeagueId,
+  setSelectedDate,
 } = displaySlice.actions;
 
 export default displaySlice.reducer;

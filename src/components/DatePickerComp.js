@@ -1,11 +1,13 @@
 import Datepicker from "tailwind-datepicker-react";
 import { useState } from "react";
 
+import { setSelectedDate } from "../store/displaySlice";
+import { useDispatch } from "react-redux";
+
 const options = {
-  title: "Demo Title",
   autoHide: true,
   todayBtn: false,
-  clearBtn: true,
+  clearBtn: false,
   maxDate: new Date("2030-01-01"),
   minDate: new Date("1950-01-01"),
   theme: {
@@ -14,24 +16,28 @@ const options = {
     clearBtn: "",
     icons: "",
     text: "",
-    disabledText: "bg-red-500",
+    disabledText: "bg-gray-900",
     input: "",
     inputIcon: "",
     selected: "",
   },
-  icons: {
-    // () => ReactElement | JSX.Element
-    prev: () => <span>Previous</span>,
-    next: () => <span>Next</span>,
-  },
-  datepickerClassNames: "top-12",
-  defaultDate: new Date("2022-01-01"),
+  // icons: {
+  //   // () => ReactElement | JSX.Element
+  //   prev: () => <span>Previous</span>,
+  //   next: () => <span>Next</span>,
+  // },
+  datepickerClassNames: "",
+  defaultDate: new Date(),
   language: "en",
 };
 
 const DatePickerComp = () => {
   const [show, setShow] = useState(false);
+
+  const dispatch = useDispatch();
+
   const handleChange = (selectedDate) => {
+    dispatch(setSelectedDate(selectedDate));
     console.log(selectedDate);
   };
   const handleClose = (state) => {

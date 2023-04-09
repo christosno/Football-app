@@ -11,16 +11,16 @@ const Matches = () => {
     useState(true);
 
   const leagueId = useSelector((store) => store.display.leagueId);
+  const selectedDate = useSelector((store) => store.display.selectedDate);
 
-  const today = new Date();
-  const currentDate = today.toISOString().slice(0, 10);
+  const currentDate = selectedDate.toISOString().slice(0, 10);
 
-  const dayBefore = new Date(today);
-  dayBefore.setDate(today.getDate() - 1);
+  const dayBefore = new Date(selectedDate);
+  dayBefore.setDate(selectedDate.getDate() - 1);
   const dayBeforeDate = dayBefore.toISOString().slice(0, 10);
 
-  const dayAfter = new Date(today);
-  dayAfter.setDate(today.getDate() + 1);
+  const dayAfter = new Date(selectedDate);
+  dayAfter.setDate(selectedDate.getDate() + 1);
   const dayAfterDate = dayAfter.toISOString().slice(0, 10);
 
   const currentYear = currentDate.slice(0, 4);
