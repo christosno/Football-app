@@ -2,10 +2,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 
 const useFetchMatchesByDate = (matchesDate, leagueId, currentYear) => {
-  // date: currentDate, league: leagueId, season: currentYear
   const fetchParams = { date: matchesDate };
-
-  console.log("Fetching Data ---> leagueId", leagueId);
 
   if (leagueId) {
     fetchParams.league = leagueId;
@@ -16,7 +13,7 @@ const useFetchMatchesByDate = (matchesDate, leagueId, currentYear) => {
 
   const options = {
     method: "GET",
-    url: "https://api-football-v1.p.rapidapi.com/v3/fixtures111",
+    url: "https://api-football-v1.p.rapidapi.com/v3/fixtures11",
     params: fetchParams,
     headers: {
       "X-RapidAPI-Key": process.env.REACT_APP_X_RAPIDAPI_KEY,

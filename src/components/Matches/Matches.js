@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useFetchMatchesByDate from "../../hooks/useFetchMatchesByDate";
+import useFetchLeagueSeason from "../../hooks/useFetchLeagueSeason";
 import Match from "./Match";
 import { Button } from "react-daisyui";
 import { useSelector } from "react-redux";
@@ -23,6 +24,13 @@ const Matches = () => {
   const dayAfterDate = dayAfter.toISOString().slice(0, 10);
 
   const currentYear = currentDate.slice(0, 4);
+
+  const [leagueSeasonData] = useFetchLeagueSeason(leagueId);
+
+  console.log(
+    "leagueSeasonData - - - - - - - - - - - - >>>>",
+    leagueSeasonData
+  );
 
   const [isLoading, data, isError, error] = useFetchMatchesByDate(
     currentDate,
